@@ -1,0 +1,27 @@
+
+# Xsens rules
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="XS5SRUU", SYMLINK="Xsens_Dongle", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="XSIISY4", SYMLINK="Xsens_Awinda", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBIZF4J", SYMLINK="Xsens_MTw_00B419AC", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBIZHAI", SYMLINK="Xsens_MTw_00B419B5", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBIZG4D", SYMLINK="Xsens_MTw_00B419B6", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBI1SFI", SYMLINK="Xsens_MTw_00B418C9", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBIZL3X", SYMLINK="Xsens_MTw_00B419BB", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
+SUBSYSTEMS=="usb", KERNELS=="ttyUSB*",
+ATTRS{manufacturer}=="Xsens", ATTRS{serial}=="DBI21QR", SYMLINK="Xsens_MTw_00B4193B", RUN+="/bin/sh -c 'echo 2 > sys/class/tty/$KERNEL/device/latency_timer'"
+#
