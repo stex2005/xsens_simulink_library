@@ -33,3 +33,8 @@ SUBSYSTEMS=="usb", KERNEL=="ttyUSB*", ATTRS{manufacturer}=="Xsens", RUN+="/bin/s
 - link new versions
   sudo ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
   sudo ln -s /usr/bin/g++-4.8 /usr/bin/g++
+  
+  
+  #  To copy a Simulink block without link:
+  
+  https://www.mathworks.com/matlabcentral/answers/41147-copying-a-simulink-library-block-without-its-link
