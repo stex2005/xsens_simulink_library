@@ -1,0 +1,83 @@
+#--------------------------- Tool Specifications -------------------------
+#
+# Modify the following macros to reflect the tools you wish to use for
+# compiling and linking your code.
+#
+CC = /usr/local/MATLAB/R2017b/bin/mex 
+LD = $(CC)
+ 
+MODEL     = XsensLibrary2
+TARGET      = sfun
+MODULE_SRCS   = c3_XsensLibrary2.cpp c4_XsensLibrary2.cpp
+MODEL_SRC  = XsensLibrary2_sfun.cpp
+MODEL_REG = 
+MAKEFILE    = XsensLibrary2_sfun.mku
+MATLAB_ROOT  = /usr/local/MATLAB/R2017b/toolbox/stateflow/stateflow/../../..
+BUILDARGS   = 
+#------------------------------ Include/Lib Path ------------------------------
+ 
+USER_INCLUDES = -I"/home/fes/Documenti/Cybathlon/Xsens_SDG/Lib_Xsens" -I"/Users/constantin/Documents/retrainer/retrainer.repo/code/trunk/incl/rehamove" -I"/Users/constantin/Documents/retrainer/retrainer.repo/code/trunk/incl" 
+AUX_INCLUDES = 
+MLSLSF_INCLUDES  = \
+    -I"/usr/local/MATLAB/R2017b/extern/include" \
+    -I"/usr/local/MATLAB/R2017b/simulink/include" \
+    -I"/usr/local/MATLAB/R2017b/simulink/include/sf_runtime" \
+    -I"/usr/local/MATLAB/R2017b/stateflow/c/mex/include" \
+    -I"/usr/local/MATLAB/R2017b/rtw/c/src" \
+    -I"/home/fes/Documenti/Cybathlon/Xsens_SDG/Lib_Xsens/slprj/_sfprj/ProvaXsens/XsensLibrary2/sfun/src" 
+
+THIRD_PARTY_INCLUDES = 
+
+INCLUDE_PATH = $(USER_INCLUDES) $(AUX_INCLUDES) $(MLSLSF_INCLUDES) $(COMPILER_INCLUDES) $(THIRD_PARTY_INCLUDES)
+ 
+#----------------- Compiler and Linker Options --------------------------------
+ 
+# Optimization Options
+ 
+CC_OPTS = 
+CPP_REQ_DEFINES = -DMATLAB_MEX_FILE
+ 
+# Uncomment this line to move warning level to W4
+# cflags = $(cflags:W3=W4)
+CFLAGS = $(CC_OPTS) $(CPP_REQ_DEFINES) $(INCLUDE_PATH)
+ 
+LDFLAGS =  
+ 
+AUXLDFLAGS = 
+#----------------------------- Source Files -----------------------------------
+ 
+REQ_SRCS  = $(MODEL_SRC) $(MODEL_REG) $(MODULE_SRCS)
+
+USER_ABS_OBJS =
+
+AUX_ABS_OBJS =
+THIRD_PARTY_OBJS =
+
+REQ_OBJS = $(REQ_SRCS:.cpp=.o)
+REQ_OBJS2 = $(REQ_OBJS:.c=.o)
+OBJS = $(REQ_OBJS2) $(USER_ABS_OBJS) $(AUX_ABS_OBJS) $(THIRD_PARTY_OBJS)
+OBJLIST_FILE = XsensLibrary2_sfun.mol
+SFCLIB = 
+AUX_LNK_OBJS = 
+USER_LIBS = 
+PARLIB = 
+  MAPCSF = /usr/local/MATLAB/R2017b/tools/glnxa64/mapcsf
+   # RUN_MAPCSF_ON_UNIX is defined only if MAPCSF exists on this platform.
+   ifneq ($(wildcard $(MAPCSF)),) # run MAPCSF if it exists on this platform
+      RUN_MAPCSF_ON_UNIX =  /usr/local/MATLAB/R2017b/tools/glnxa64/mapcsf $@
+   endif
+ 
+#--------------------------------- Rules --------------------------------------
+ 
+DO_RANLIB = ranlib $(MODEL)_$(TARGET).a
+ 
+$(MODEL)_$(TARGET).a : $(MAKEFILE) $(OBJS) $(SFCLIB) $(AUX_LNK_OBJS) $(USER_LIBS) $(THIRD_PARTY_LIBS)
+	@echo ### Linking ...
+	ar ruv $(MODEL)_$(TARGET).a $(OBJS)
+	$(DO_RANLIB)
+%.o :    %.c
+	$(CC) -c $(CFLAGS) $<
+
+%.o :    %.cpp
+	$(CC) -c $(CFLAGS) $<
+
